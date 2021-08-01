@@ -7,19 +7,19 @@ $veiculosArray = getWholeDB();
 
 $veiculos = new Veiculos($veiculosArray);
 
-$veiculosEstado = $veiculos->getVehicleStatus();
+$veiculosMaisBaratos = $veiculos->getCheapest();
 
 ?>
 
 
 <!DOCTYPE html>
-<html lang="PT-PT">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desafio 1</title>
+    <title>Desafio 4</title>
     <link rel="icon" type="image/png" href="../assets/images/icons/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -31,7 +31,6 @@ $veiculosEstado = $veiculos->getVehicleStatus();
 </head>
 
 <body>
-
     <div class="limiter">
         <div class="container-table100">
             <div class="wrap-table100">
@@ -58,13 +57,10 @@ $veiculosEstado = $veiculos->getVehicleStatus();
                                 <th class="column6">
                                     Preço
                                 </th>
-                                <th class="column7">
-                                    Estado
-                                </th>
                             </tr>
                         </thead>
                         <?php
-                        foreach ($veiculosEstado as $veiculo => $caracteristicas) {
+                        foreach ($veiculosMaisBaratos as $veiculo => $caracteristicas) {
                         ?>
                             <tr>
                                 <td class="column1">
@@ -85,25 +81,13 @@ $veiculosEstado = $veiculos->getVehicleStatus();
                                 <td class="column6">
                                     <?= ($caracteristicas['Preço'] == '') ? '&nbsp;' : $caracteristicas['Preço']; ?>
                                 </td>
-
-                                <?php
-                                if ($caracteristicas['Estado'] == 'Válido') {
-                                    echo '<td class="column7" style="color: #00C4B3">';
-                                    echo ($caracteristicas['Estado'] == '') ? '&nbsp;' : $caracteristicas['Estado'];
-                                } else {
-                                    echo '<td class="column7" style="color: #F95D50">';
-                                    echo ($caracteristicas['Estado'] == '') ? '&nbsp;' : $caracteristicas['Estado'];
-                                }
-
-                                ?>
-                                </td>
                             </tr>
                         <?php
                         }
                         ?>
                     </table>
                     <br>
-                    <a>Desafio 1 - Listagem de todos os veículos com informação válida e inválida.</a>
+                    <a>Desafio 4 - Listagem dos 5 veículos mais baratos de toda a BD.</a>
                 </div>
             </div>
         </div>
